@@ -1,13 +1,59 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + TS</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataSigma</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/style.css">
+
+</head>
+<body>
+    <header>
+        
+        <div class="header-title flex justify-center align-center flex-column">
+            <img src="assets/logo-gray.svg" alt="Logo do DataSigma">
+
+            <h1>DataSigma</h1>
+            <p>Simplificando a Estatística... Escolha como deseja entrar com os dados:</p>
+        </div>
+
+        <div class="input-options">
+
+            <a href="#" class="table-input input-op">
+                <div class="icon">
+                    <img src="assets/icons/table_24dp_FFFFFF.svg" alt="table icon">
+                </div>
+
+                <span>Entrar dados com tabela</span>
+            </a>
+            
+            <a href="#" class="text-input input-op">
+                <div class="icon">
+                    <img src="assets/icons/edit_note_24dp_FFFFFF.svg" alt="edit node icon">
+                </div>
+
+                <span>Entrar dados com texto</span>
+            </a>
+            <a href="#" class="table-input input-op">
+                <div class="icon">
+                    <img src="assets/icons/fit_width_24dp_FFFFFF.svg" alt="fit width icon">
+                </div>
+
+                <span>Entrar dados com classes</span>
+            </a>
+
+        </div>
+
+    </header>
+    
+    <div id="particles-js"></div>
+
+    <script src="src/particles/particles.min.js"></script>
+    <script type="module" src="src/particles/particle-loader.js"></script>
+</body>
 </html>
