@@ -1,6 +1,8 @@
 declare const particlesJS: any;
 
-window.onload = function() {
+export default function initParticles(){
+
+    window.onload = function() {
 
     particlesJS('particles-js', {
         "particles": {
@@ -104,4 +106,5 @@ window.onload = function() {
         },
         "retina_detect": true
     });
-};
+    };
+}
