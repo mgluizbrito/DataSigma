@@ -36,9 +36,32 @@ header{
 
 .input-options{
     display: flex;
-    gap: 2rem;
+    gap: 1rem;
     flex-wrap: wrap;
     margin-top: 2rem;
+}
+
+.agrp-classes-options,
+.agrp-discreto-options{
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    border: 1px solid blue;
+    padding: 1rem;
+    position: relative;
+    border-radius: 1rem;
+}
+.agrp-discreto-options .title,
+.agrp-classes-options .title{
+    position: absolute;
+    top: -0.8rem;
+    left: 1rem;
+    background-color: var(--bg-light);
+    font-weight: bold;
+    padding: 0 0.5rem;
+    color: var(--primary-blue);
+    color: var(--text-secondary-light);
 }
 
 .input-op {
