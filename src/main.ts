@@ -1,5 +1,5 @@
 import initParticles from './particles/particle-loader.ts';
-import initOutputs from './outputs.ts';
+import initOutputsGlobal from './outputsGlobals.ts';
 import initTableOutput from './table-output.ts';
 import initClasseOutput from './class-output.ts';
 
@@ -16,17 +16,17 @@ function initialize() {
         initParticles();
         break;
 
-    case '/DataSigma/public/table/':
-        initOutputs();
+    case '/DataSigma/table/':
+        initOutputsGlobal();
         initTableOutput();
         break;
 
-    case '/DataSigma/public/text/':
-        initOutputs();
+    case '/DataSigma/text/':
+        initOutputsGlobal();
         break;
 
-    case '/DataSigma/public/classe/':
-        initOutputs();
+    case '/DataSigma/classe/':
+        initOutputsGlobal();
         initClasseOutput();
         break;
 
