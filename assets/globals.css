@@ -25,6 +25,14 @@ justify-center{
     justify-content: center;
 }
 
+justify-between{
+    justify-content: space-between;
+}
+
+justify-around{
+    justify-content: space-around;
+}
+
 .align-center{
     align-items: center;
 }
@@ -35,4 +43,10 @@ justify-center{
 
 .flex-column{
     flex-direction: column;
+}
+
+button{
+    cursor: pointer;
+    border: none;
+    outline: none;
 }
