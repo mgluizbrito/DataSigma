@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataSigma Dashboard</title>
+
+    <link rel="stylesheet" href="/assets/output.css">
+    <script type="module" src="/src/main.ts" defer></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen p-4">
+    
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <svg width="62" height="62" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <!-- Gradiente principal para os elementos do gráfico, usando tons de cinza mais escuros e modernos -->
+                    <linearGradient id="modernGrayGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#1e1eb1;stop-opacity:1" /> <!-- Tailwind gray-600 -->
+                    <stop offset="100%" style="stop-color:#FFFFFF;stop-opacity:1" /> <!-- Tailwind gray-400 -->
+                    </linearGradient>
+                    <!-- Gradiente para a linha de tendência, com um contraste um pouco maior para se destacar sutilmente -->
+                    <linearGradient id="modernGrayGradientContrast" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#1e1eb1;stop-opacity:1" /> <!-- Tailwind gray-700 -->
+                    <stop offset="100%" style="stop-color:#FFFFFF;stop-opacity:1" /> <!-- Tailwind gray-500 -->
+                    </linearGradient>
+                </defs>
+
+                <!-- Fundo sutil para o logo removido para transparência (mantido assim) -->
+                <!-- <rect x="10" y="10" width="180" height="180" rx="20" fill="#FFFFFF" stroke="#F1F5F9" stroke-width="2"/> -->
+
+                <!-- Colunas do gráfico de barras, representando dados, agora com o novo gradiente de cinza moderno -->
+                <rect x="40" y="120" width="30" height="40" rx="5" fill="url(#modernGrayGradient)"/>
+                <rect x="80" y="90" width="30" height="70" rx="5" fill="url(#modernGrayGradient)"/>
+                <rect x="120" y="60" width="30" height="100" rx="5" fill="url(#modernGrayGradient)"/>
+
+                <!-- Linha de tendência, indicando crescimento ou análise, agora com o novo gradiente de cinza de contraste -->
+                <polyline points="30,120 70,90 110,60 150,30"
+                            stroke="url(#modernGrayGradientContrast)"
+                            stroke-width="8"
+                            fill="none"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"/>
+
+                <!-- Flecha na ponta da linha de tendência, agora com o novo gradiente de cinza de contraste -->
+                <polygon points="140,30 160,30 150,20" fill="url(#modernGrayGradientContrast)" transform="rotate(45 150 30)"/>
+
+
+                <!-- Detalhe sutil de engrenagem/cálculo no canto inferior direito, agora em tons de cinza modernos -->
+                <g transform="translate(165, 165) scale(0.3)">
+                    <circle cx="0" cy="0" r="25" fill="#6B7280"/> <!-- Tailwind gray-500 -->
+                    <circle cx="0" cy="0" r="10" fill="#E5E7EB"/> <!-- Tailwind gray-200, para o centro claro -->
+                    <g fill="#9CA3AF"> <!-- Tailwind gray-400 -->
+                    <rect x="-30" y="-5" width="10" height="10" rx="2" transform="rotate(0 0 0)"/>
+                    <rect x="-30" y="-5" width="10" height="10" rx="2" transform="rotate(45 0 0)"/>
+                    <rect x="-30" y="-5" width="10" height="10" rx="2" transform="rotate(90 0 0)"/>
+                    <rect x="-30" y="-5" width="10" height="10" rx="2" transform="rotate(135 0 0)"/>
+                    </g>
+                </g>
+                </svg>
+
+                <span class="logo-text">DataSigma</span>
+            </div>
+        </header>
+
+        <!-- Data Input Section -->
+        <div class="card">
+            <div class="input-header flex justify-between align-center">
+
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="input-header-icon">
+                        <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"></path>
+                        <polyline points="17 8 12 3 7 8"></polyline>
+                        <line x1="12" y1="3" x2="12" y2="15"></line>
+                    </svg>
+                    Entrada de Dados
+                </div>
+
+                <div class="input-unit-measure flex align-center">
+                    Unidade:
+                    <div>
+                        <input type="text" class="input-field" placeholder="Ex: cm, kg, m..." style="width: 90px;"/>
+                    </div>
+                </div>
+
+            </div>
+            <div class="menu-tabs">
+                <button class="menu-button active" id="menu-table">Tabela</button>
+                <button class="menu-button" id="menu-text">Texto</button>
+                <button class="menu-button" id="menu-class">Classes</button>
+            </div>
+            
+            <div id="data-table">
+                <!-- Header for the table -->
+                <div class="table-header">
+                    <div>Xi (Valor)</div>
+                    <div>Fi (Freq.)</div>
+                    <div></div>
+                    <div>Ação</div>
+                </div>
+
+                <!-- Table rows will be added here by JavaScript -->
+                <div id="table-body"></div>
+
+                <!-- Add Row Button -->
+                <div class="add-row-button">
+                    <span>+</span>
+                    <span>Adicionar Linha</span>
+                </div>
+            </div>
+
+            <button class="calculate-button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                    <path d="M12 8l4 4-4 4-4-4z"></path>
+                    <line x1="12" y1="12" x2="12" y2="16"></line>
+                </svg>
+                <span>Calcular Estatísticas</span>
+            </button>
+        </div>
+
+        <!-- Calculation Options Section -->
+        <div class="card options-container">
+            <div class="input-header">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="input-header-icon">
+                    <path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h3.93a2 2 0 011.66.9l.82 1.2A2 2 0 0012 6.5h8a2 2 0 012 2v10z"></path>
+                    <rect x="2" y="3" width="20" height="4" rx="2" ry="2"></rect>
+                    <path d="M10 12h.01"></path>
+                    <path d="M14 12h.01"></path>
+                    <path d="M18 12h.01"></path>
+                </svg>
+                
+                Saída de Dados
+            </div>
+            <div class="options-list">
+                <div class="checkbox-option">
+                    <input type="checkbox" id="moda" name="moda" value="moda">
+                    <label for="moda">Moda</label>
+                </div>
+                <div class="checkbox-option">
+                    <input type="checkbox" id="media" name="media" value="media">
+                    <label for="media">Média</label>
+                </div>
+                <div class="checkbox-option">
+                    <input type="checkbox" id="mediana" name="mediana" value="mediana">
+                    <label for="mediana">Mediana</label>
+                </div>
+                <div class="checkbox-option">
+                    <input type="checkbox" id="variancia" name="variancia" value="variancia">
+                    <label for="variancia">Variância</label>
+                </div>
+                <div class="checkbox-option">
+                    <input type="checkbox" id="desvioPadrao" name="desvioPadrao" value="desvioPadrao">
+                    <label for="desvioPadrao">Desvio Padrão</label>
+                </div>
+                <div class="checkbox-option">
+                    <input type="checkbox" id="coeficienteVariacao" name="coeficienteVariacao" value="coeficienteVariacao">
+                    <label for="coeficienteVariacao">Coeficiênte de Variação</label>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Welcome Section -->
+        <div class="card welcome-section">
+            <div class="welcome-icon-container">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4c68d1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="welcome-icon">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                    <path d="M12 8l4 4-4 4-4-4z"></path>
+                    <line x1="12" y1="12" x2="12" y2="16"></line>
+                </svg>
+            </div>
+            <h2 class="welcome-title">Bem-vindo ao DataSigma</h2>
+            <p class="welcome-text">
+                Insira seus dados e descubra insights estatísticos poderosos com visualizações interativas e análises em tempo real.
+            </p>
+            <p class="welcome-support-text">
+                Suporte para análise de frequência, regressão e muito mais.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
