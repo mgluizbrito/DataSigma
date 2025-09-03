@@ -37,13 +37,13 @@
                 <div class="input-unit-measure flex align-center">
                     Unidade:
                     <div>
-                        <input type="text" class="input-field" placeholder="Ex: cm, kg, m..." style="width: 90px;"/>
+                        <input type="text" class="input-field" id="unit-measure" placeholder="Ex: cm, kg, m..." style="width: 90px;"/>
                     </div>
                 </div>
 
             </div>
             <div class="menu-tabs">
-                <button class="menu-button active" id="menu-class">Classes</button>
+                <button class="menu-button" id="menu-class">Classes</button>
             </div>
             
             <div id="data-table">
@@ -95,7 +95,7 @@
                 </div>
                 <div class="checkbox-option">
                     <input type="checkbox" id="moda-cyzuber" name="moda-cyzuber" value="moda-cyzuber">
-                    <label for="moda-cyzuber">Moda de Cyzuber</label>
+                    <label for="moda-cyzuber">Moda de Czuber</label>
                 </div>
                 <div class="checkbox-option">
                     <input type="checkbox" id="media" name="media" value="media">
@@ -138,6 +138,18 @@
                 Suporte para análise de frequência, regressão e muito mais.
             </p>
         </div>
+
+        <!-- Calculation Results Section -->
+        <div class="card results-section d-none">
+            <div class="input-header">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="input-header-icon">
+                    <path d="M12 20V10M18 20V4M6 20v-6"></path>
+                </svg>
+                Resultados do Cálculo
+            </div>
+            <div class="results-list"></div>
+        </div>
+
     </div>
 </body>
 </html>

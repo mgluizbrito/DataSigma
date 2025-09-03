@@ -36,8 +36,13 @@ function addRow(): void {
 
     tableBody.appendChild(row);
     
-    const newField = row.querySelector('.xi-field') as HTMLInputElement;
-    if (newField) newField.focus();
+    const newXiField = row.querySelector('.xi-field') as HTMLInputElement;
+    if (newXiField) newXiField.focus();
+    
+    const newFiField = row.querySelector('.fi-field') as HTMLInputElement;
+    newFiField.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') addRow();
+    });
 }
 
 // Função para remover uma linha da tabela
@@ -50,6 +55,6 @@ function removeRow(button: HTMLButtonElement): void {
 
 export default function initTableOutput(): void {
     addRow();
-
     document.querySelector('.add-row-button')?.addEventListener('click', addRow);
+
 }

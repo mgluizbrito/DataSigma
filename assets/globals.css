@@ -50,3 +50,7 @@ button{
     border: none;
     outline: none;
 }
+
+.d-none{
+    display: none !important;
+}
