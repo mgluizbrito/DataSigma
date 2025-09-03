@@ -26,7 +26,7 @@ function initialize() {
         break;
 
     case '/DataSigma/classe/':
-        initOutputsGlobal();
+        // initOutputsGlobal();
         initClasseOutput();
         break;
 

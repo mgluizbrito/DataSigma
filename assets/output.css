@@ -7,7 +7,6 @@ body {
     align-items: flex-start;
     justify-content: center;
     min-height: 100vh;
-    padding: 1rem;
 }
 .container {
     max-width: 1200px;
@@ -15,7 +14,7 @@ body {
     margin-right: auto;
     display: flex;
     flex-wrap: wrap;
-    gap: 2rem;
+    gap: 1rem 2rem;
     align-items: flex-start;
 }
 .main-content {
@@ -39,6 +38,17 @@ body {
     stroke: var(--primary-blue-light);
     stroke-width: 2px;
 }
+
+.logo a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+.logo img{
+    height: 62px;
+    width: 62px;
+}
+
 .logo-text {
     font-size: 1.5rem;
     font-weight: bold;
