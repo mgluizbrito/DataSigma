@@ -12,10 +12,10 @@ function addRow(): void {
 
     row.innerHTML = `
         <div>
-            <input type="number" value="0.0" class="input-field">
+            <input type="number" placeholder="Xi" class="input-field xi-field">
         </div>
         <div>
-            <input type="number" value="1" class="input-field">
+            <input type="number" placeholder="Fi" class="input-field fi-field">
         </div>
         <div></div>
         <div style="text-align: right;">
@@ -35,6 +35,9 @@ function addRow(): void {
     }
 
     tableBody.appendChild(row);
+    
+    const newField = row.querySelector('.xi-field') as HTMLInputElement;
+    if (newField) newField.focus();
 }
 
 // Função para remover uma linha da tabela

@@ -2,6 +2,7 @@ import initParticles from './particles/particle-loader.ts';
 import initOutputsGlobal from './outputsGlobals.ts';
 import initTableOutput from './table-output.ts';
 import initClasseOutput from './class-output.ts';
+import { initCalculateByTable, initCalculateByText } from './CalculatorService/AgrupDiscreto.ts';
 
 /**
  * Main Initialization File
@@ -19,10 +20,12 @@ function initialize() {
     case '/DataSigma/table/':
         initOutputsGlobal();
         initTableOutput();
+        initCalculateByTable();
         break;
 
     case '/DataSigma/text/':
         initOutputsGlobal();
+        initCalculateByText();
         break;
 
     case '/DataSigma/classe/':
