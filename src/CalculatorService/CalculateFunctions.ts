@@ -24,16 +24,15 @@ export function calcMedia(Xi: number[], Fi: number[]): number{
     let sumXiFi: number = 0;
     let sumFi: number = amostraLength(Fi);
     
-    Fi.forEach((freq, i) => sumXiFi += Xi[i] * Fi[i]);
+    for (let i in Fi) sumXiFi += Xi[i] * Fi[i];
     
     return parseFloat((sumXiFi / sumFi).toFixed(2));
 }
 
 // Algoritimo Mediana
 export function calcMediana(Xi: number[], Fi: number[]): number | null{
-    let sumFi: number = amostraLength(Fi);
+
     const freqAcumulada: number[] = calcFreqAcumulada(Fi);
-    const meio: number = Math.floor(sumFi / 2);
 
     const posicaoMediana: number = freqAcumulada[freqAcumulada.length - 1] / 2;
 
