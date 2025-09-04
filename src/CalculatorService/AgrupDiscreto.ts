@@ -67,7 +67,7 @@ function renderResults(Xi: number[], Fi: number[]): void {
         //apaga se já existir
         if (resultSection.querySelector('.result-moda')) document.querySelector('.result-moda')?.remove();
 
-        let modas = CalcFunc.calculateModa(Xi, Fi) as number[];
+        let modas = CalcFunc.calcModa(Xi, Fi) as number[];
 
         let modaDiv = document.createElement('div');
         modaDiv.className = 'result-item result-moda';
