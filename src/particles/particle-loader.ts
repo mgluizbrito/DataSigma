@@ -24,10 +24,10 @@ export default function initParticles(){
                 },
             },
             "opacity": {
-                "value": 0.5,
-                "random": true,
+                "value": 1,
+                "random": false,
                 "anim": {
-                    "enable": true,
+                    "enable": false,
                     "speed": 1,
                     "opacity_min": 0.1,
                     "sync": true
@@ -47,8 +47,8 @@ export default function initParticles(){
                 "enable": true,
                 "distance": 150,
                 "color": "#ffffff",
-                "opacity": 0.4,
-                "width": 1
+                "opacity": 1,
+                "width": 2
             },
             "move": {
                 "enable": true,
