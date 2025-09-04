@@ -26,17 +26,23 @@ export function calcMedia(Xi: number[], Fi: number[]): number{
     
     Fi.forEach((freq, i) => sumXiFi += Xi[i] * Fi[i]);
     
-    return sumXiFi / sumFi;
+    return parseFloat((sumXiFi / sumFi).toFixed(2));
 }
 
 // Algoritimo Mediana
-export function calcMediana(Xi: number[], Fi: number[]): number{
+export function calcMediana(Xi: number[], Fi: number[]): number | null{
     let sumFi: number = amostraLength(Fi);
-    
-    if (sumFi % 2 === 1) return Xi[(sumFi + 1) / 2];
-    
-    const Me = ((sumFi / 2) + (sumFi / 2 + 1)) / 2;
-    return Xi[Me];
+    const freqAcumulada: number[] = calcFreqAcumulada(Fi);
+    const meio: number = Math.floor(sumFi / 2);
+
+    const posicaoMediana: number = freqAcumulada[freqAcumulada.length - 1] / 2;
+
+    freqAcumulada.forEach((freq, i) => {
+        
+        if (posicaoMediana <= freq) return Xi[i]
+    })
+
+    return null;
 }
 
 // Algoritimo Variancia
@@ -46,15 +52,28 @@ export function calcVariancia(Xi: number[], Fi: number[]){
     
     Fi.forEach((freq, i) => sumXi_medXi_Fi += ((Xi[i] - calcMedia(Xi, Fi)) ** 2) * freq);
     
-    return sumXi_medXi_Fi / (sumFi - 1);
+    return parseFloat((sumXi_medXi_Fi / (sumFi - 1)).toFixed(2));
 }
 
 // Algoritimo Desvio Padrão
-export function calcDesvioPadrao(variancia: number) { return Math.sqrt(variancia) };
+export function calcDesvioPadrao(variancia: number): number { return parseFloat(Math.sqrt(variancia).toFixed(2)) };
 
 // Algoritimo Desvio Padrão (%)
-export function calcCoeficienteVariacao(desvioPadrao: number, media: number){
-    return 100 * desvioPadrao / media;
+export function calcCoeficienteVariacao(desvioPadrao: number, media: number): number{
+    return parseFloat((100 * desvioPadrao / media).toFixed(2));
+}
+
+// Algoritimo Frequencia Acumulada (FAC)
+export function calcFreqAcumulada(Fi: number[]){
+    let freqAcumulada: number[] = [];
+    let facAnterior: number = 0; 
+
+    Fi.forEach(freq => {
+        facAnterior += freq;
+        freqAcumulada.push(facAnterior)
+    })
+
+    return freqAcumulada;
 }
 
 // Calcula o tamanho da amostra (N)
