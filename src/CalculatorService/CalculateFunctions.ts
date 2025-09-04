@@ -5,7 +5,7 @@ export function calcModa(Xi:number[], Fi: number[]): number[] | null {
     let maxFrequency = Math.max(...Fi);
 
     Fi.forEach((frequency, i) => {
-        if (frequency === maxFrequency) modas.push(Xi[i]);
+        if (frequency > 1 && frequency === maxFrequency) modas.push(Xi[i]);
     });
 
     return modas;
@@ -31,17 +31,11 @@ export function calcMedia(Xi: number[], Fi: number[]): number{
 
 // Algoritimo Mediana
 export function calcMediana(Xi: number[], Fi: number[]): number | null{
+    const freqAcumulada = calcFreqAcumulada(Fi);
+    const posicaoMediana = freqAcumulada[freqAcumulada.length - 1] / 2;
 
-    const freqAcumulada: number[] = calcFreqAcumulada(Fi);
-
-    const posicaoMediana: number = freqAcumulada[freqAcumulada.length - 1] / 2;
-
-    freqAcumulada.forEach((freq, i) => {
-        
-        if (posicaoMediana <= freq) return Xi[i]
-    })
-
-    return null;
+    const i = freqAcumulada.findIndex(freq => posicaoMediana <= freq);
+    return i !== -1 ? Xi[i] : (Xi[i] + Xi[i + 1]) / 2;
 }
 
 // Algoritimo Variancia
