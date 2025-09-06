@@ -12,6 +12,7 @@ body {
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
+    padding-bottom: 2rem;
     display: flex;
     flex-wrap: wrap;
     gap: 1rem 2rem;
@@ -281,10 +282,13 @@ body {
     font-size: 1.25rem;
     margin-top: 0.25rem;
 }
-.results-section {
+.results-section,
+.charts-section {
     display: block;
     width: 100%;
 }
+
+.charts-section .input-header-icon,
 .results-section .input-header-icon {
     color: #4c68d1;
 }
@@ -305,4 +309,8 @@ body {
 .chart-container {
     width: 100%;
     height: 300px;
+}
+
+#results-charts{
+    min-height: 400px;
 }

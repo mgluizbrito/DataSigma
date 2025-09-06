@@ -1,4 +1,5 @@
 import * as CalcFunc from './CalculateFunctions.ts';
+import renderCharts from '../gcharts/gchart-render.ts';
 
 let Xi: number[] = [];
 let Fi: number[] = [];
@@ -55,12 +56,14 @@ export function initCalculateByText(): void {
 }
 
 function renderResults(Xi: number[], Fi: number[]): void {
-    
     unitMeasure = (document.querySelector('#unit-measure') as HTMLInputElement).value;
 
-    document.querySelector('.welcome-section')?.classList.add("d-none");
+    const chartsSection = document.querySelector('.charts-section') as HTMLDivElement
     const resultSection = document.querySelector('.results-section') as HTMLDivElement;
+
+    document.querySelector('.welcome-section')?.classList.add("d-none");
     resultSection.classList.remove('d-none');
+    chartsSection.classList.remove('d-none');
     
     const modaCheckbox = document.getElementById('moda') as HTMLInputElement;
     const mediaCheckbox = document.getElementById('media') as HTMLInputElement;
@@ -165,4 +168,5 @@ function renderResults(Xi: number[], Fi: number[]): void {
         resultSection.querySelector('.results-list')?.appendChild(coeficienteVariacaoDiv);
     }
 
+    renderCharts("results-charts", Xi, Fi, unitMeasure);
 }
