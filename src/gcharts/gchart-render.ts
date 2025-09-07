@@ -46,17 +46,19 @@ function drawChart(divID: string, Xi: number[], Fi: number[], unitMeasure: strin
 
     const chartConfig = {
         title: "Distribuição de Frequência",
-        hAxis: { title: `Xi (${unitMeasure})` },
+        hAxis: { title: `Xi [${unitMeasure}]` },
         vAxis: {
 			title: "Fi",
 			gridlines: { count: 12 },
 		},
+        pointSize: 6,
+        lineWidth: 2,
         legend: { position: "none" },
         bar: { groupWidth: "60%" },
 		colors: ["#4c68d1"],
     };
 
-    const chart = new google.visualization.ColumnChart(
+    const chart = new google.visualization.LineChart(
         document.getElementById(divID)
     );
     chart.draw(data, chartConfig);
