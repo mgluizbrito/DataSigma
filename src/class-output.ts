@@ -9,13 +9,13 @@ function addRow(): void {
 
     row.innerHTML = `
         <div>
-            <input type="number" value="0.0" class="input-field">
+            <input type="number" placeholder="Li" class="input-field li-field">
         </div>
         <div>
-            <input type="number" value="0.0" class="input-field">
+            <input type="number" placeholder="Ls" class="input-field ls-field">
         </div> 
         <div>
-            <input type="number" value="1" class="input-field">
+            <input type="number" placeholder="Fi" class="input-field fi-field">
         </div>
         <div></div>
         <div style="text-align: right;">
@@ -35,14 +35,20 @@ function addRow(): void {
     }
 
     tableBody.appendChild(row);
+
+    const newLiField = row.querySelector('.li-field') as HTMLInputElement;
+    if (newLiField) newLiField.focus();
+    
+    const newFiField = row.querySelector('.fi-field') as HTMLInputElement;
+    newFiField.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') addRow();
+    });
 }
 
 // Função para remover uma linha da tabela
 function removeRow(button: HTMLButtonElement): void {
-    const row = button.closest('.table-row');
-    if (row) {
-        row.remove();
-    }
+    const row = button.closest('.class-row');
+    if (row) row.remove();
 }
 
 export default function initClasseOutput(): void {
