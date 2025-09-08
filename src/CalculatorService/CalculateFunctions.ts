@@ -72,10 +72,22 @@ export function calcAmplitudeClasse(Li: number[], Ls: number[]): number[] {
 }
 
 export function calcMedianaClasse(Li: number[], Fi: number[], fac: number[], amplitudes: number[]): number {
-    const Em: number = amostraLength(Fi) / 2;
-    const meio:number = Math.floor(Em);
+    // 1. Calcular a metade do total de elementos
+    const Em: number = Fi.reduce((acc, current) => acc + current, 0) / 2;
 
-    let mediana = Li[meio] + ( (Em - fac[meio-1])/Fi[meio] ) * amplitudes[meio];
+    // 2. Encontrar o índice da classe da mediana
+    let indiceMediana = 0;
+    while (fac[indiceMediana] < Em) {
+        indiceMediana++;
+    }
+
+    // 3. Obter a frequência acumulada da classe anterior (se existir)
+    const facAnterior = indiceMediana > 0 ? fac[indiceMediana - 1] : 0;
+
+    // 4. Aplicar a fórmula da mediana
+    const mediana = Li[indiceMediana] + ((Em - facAnterior) / Fi[indiceMediana]) * amplitudes[indiceMediana];
+
+    // 5. Retornar o valor arredondado
     return parseFloat(mediana.toFixed(2));
 }
 
