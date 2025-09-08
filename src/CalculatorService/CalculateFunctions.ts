@@ -19,7 +19,7 @@ export function calcMedia(Xi: number[], Fi: number[]): number{
     let sumFi: number = amostraLength(Fi);
     
     for (let i in Fi) sumXiFi += Xi[i] * Fi[i];
-    
+
     return parseFloat((sumXiFi / sumFi).toFixed(2));
 }
 
@@ -79,8 +79,43 @@ export function calcMedianaClasse(Li: number[], Fi: number[], fac: number[], amp
     return parseFloat(mediana.toFixed(2));
 }
 
+export function calcModaCzuber(Li: number[], Fi: number[], amplitudes: number[]): number[] {
+    // 1. Encontrar a maior frequência e os seus índices
+    const maiorFrequencia = Math.max(...Fi);
+    const indicesModa: number[] = [];
 
-/* FUNÇÕES DO GLOBAIS EM CLASSES */
+    Fi.forEach((frequencia, index) => {
+        if (frequencia === maiorFrequencia) {
+            indicesModa.push(index);
+        }
+    });
+
+    // 2. Calcular a moda para cada classe modal encontrada
+    const modas: number[] = [];
+
+    indicesModa.forEach(indice => {
+        // Obter os valores da classe modal
+        const lio = Li[indice];
+        const ao = amplitudes[indice];
+
+        // Calcular d1 (diferença para a frequência anterior)
+        const fiAnterior = indice > 0 ? Fi[indice - 1] : 0;
+        const d1 = maiorFrequencia - fiAnterior;
+
+        // Calcular d2 (diferença para a frequência posterior)
+        const fiPosterior = indice < Fi.length - 1 ? Fi[indice + 1] : 0;
+        const d2 = maiorFrequencia - fiPosterior;
+
+        // Aplicar a fórmula da moda de Czuber e adicionar ao array
+        const moda = lio + (d1 / (d1 + d2)) * ao;
+        modas.push(parseFloat(moda.toFixed(2)));
+    });
+
+    return modas;
+}
+
+
+/* FUNÇÕES DO GLOBAIS */
 
 // Algoritimo Frequencia Acumulada (FAC)
 export function calcFreqAcumulada(Fi: number[]){
