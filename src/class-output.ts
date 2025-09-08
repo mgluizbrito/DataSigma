@@ -37,12 +37,17 @@ function addRow(): void {
     tableBody.appendChild(row);
 
     const newLiField = row.querySelector('.li-field') as HTMLInputElement;
-    if (newLiField) newLiField.focus();
+    const newLsField = row.querySelector('.ls-field') as HTMLInputElement;
+
+    if (document.querySelectorAll('.class-row')?.length > 1) {
+        newLiField.value = (document.querySelector('#classes-table-body .class-row:nth-last-child(2) .ls-field') as HTMLInputElement).value || '';
+        if (newLsField) newLsField.focus();
     
+    } else if (newLiField) newLiField.focus();
+
     const newFiField = row.querySelector('.fi-field') as HTMLInputElement;
-    newFiField.addEventListener('keydown', (event) => {
-        if (event.key === 'Enter') addRow();
-    });
+    newFiField.addEventListener('keydown', event => { if (event.key === 'Enter') addRow() });
+
 }
 
 // Função para remover uma linha da tabela
