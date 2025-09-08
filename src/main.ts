@@ -3,6 +3,7 @@ import initOutputsGlobal from './outputsGlobals.ts';
 import initTableOutput from './table-output.ts';
 import initClasseOutput from './class-output.ts';
 import { initCalculateByTable, initCalculateByText } from './CalculatorService/AgrupDiscreto.ts';
+import initCalculateByClass from './CalculatorService/AgrupClasses.ts';
 
 /**
  * Main Initialization File
@@ -30,6 +31,7 @@ function initialize() {
 
     case '/DataSigma/classe/':
         // initOutputsGlobal();
+        initCalculateByClass();
         initClasseOutput();
         break;
 

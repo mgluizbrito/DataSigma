@@ -1,3 +1,5 @@
+/* FUNÇÕES DO AGRUPAMENTO DISCRETO */
+
 // Algoritimo de Moda
 export function calcModa(Xi:number[], Fi: number[]): number[] | null {
 
@@ -9,14 +11,6 @@ export function calcModa(Xi:number[], Fi: number[]): number[] | null {
     });
 
     return modas;
-}
-
-export function getModaType(modas: number[]): string {
-    if (modas.length === 0) return "Amodal";
-    if (modas.length === 1) return "Unimodal";
-    if (modas.length === 2) return "Bimodal";
-    if (modas.length === 3) return "Trimodal";
-    return "Multimodal";
 }
 
 // Algoritimo de Média
@@ -33,7 +27,7 @@ export function calcMedia(Xi: number[], Fi: number[]): number{
 export function calcMediana(Xi: number[], Fi: number[]): number | null{
     const freqAcumulada = calcFreqAcumulada(Fi);
     const posicaoMediana = freqAcumulada[freqAcumulada.length - 1] / 2;
-
+    
     const i = freqAcumulada.findIndex(freq => posicaoMediana <= freq);
     return i !== -1 ? Xi[i] : (Xi[i] + Xi[i + 1]) / 2;
 }
@@ -56,22 +50,61 @@ export function calcCoeficienteVariacao(desvioPadrao: number, media: number): nu
     return parseFloat((100 * desvioPadrao / media).toFixed(2));
 }
 
+/* FUNÇÕES DO AGRUPAMENTO EM CLASSES */
+
+// Algoritimo Ponto Médio (PMI)
+export function calcPontoMedio(Li: number[], Ls: number[]): number[] {
+    let pmi: number[] = [];
+    
+    const length = Math.min(Li.length, Ls.length);
+    for (let i = 0; i < length; i++) pmi.push(parseFloat(((Li[i] + Ls[i]) / 2).toFixed(2)));
+    
+    return pmi;
+}
+
+export function calcAmplitudeClasse(Li: number[], Ls: number[]): number[] {
+    let amplitudes: number[] = [];
+
+    const length = Math.min(Li.length, Ls.length);
+    for (let i = 0; i < length; i++) amplitudes.push(parseFloat((Ls[i] - Li[i]).toFixed(2)));
+
+    return amplitudes;
+}
+
+export function calcMedianaClasse(Li: number[], Fi: number[], fac: number[], amplitudes: number[]): number {
+    const Em: number = amostraLength(Fi) / 2;
+    const meio:number = Math.floor(Em);
+
+    let mediana = Li[meio] + ( (Em - fac[meio-1])/Fi[meio] ) * amplitudes[meio];
+    return parseFloat(mediana.toFixed(2));
+}
+
+
+/* FUNÇÕES DO GLOBAIS EM CLASSES */
+
 // Algoritimo Frequencia Acumulada (FAC)
 export function calcFreqAcumulada(Fi: number[]){
     let freqAcumulada: number[] = [];
     let facAnterior: number = 0; 
-
+    
     Fi.forEach(freq => {
         facAnterior += freq;
         freqAcumulada.push(facAnterior)
     })
-
+    
     return freqAcumulada;
 }
-
 // Calcula o tamanho da amostra (N)
 function amostraLength(Fi: number[]): number {
     let sumFi: number = 0;
     Fi.forEach(freq => sumFi += freq);
     return sumFi;
+}
+
+export function getModaType(modas: number[]): string {
+    if (modas.length === 0) return "Amodal";
+    if (modas.length === 1) return "Unimodal";
+    if (modas.length === 2) return "Bimodal";
+    if (modas.length === 3) return "Trimodal";
+    return "Multimodal";
 }
