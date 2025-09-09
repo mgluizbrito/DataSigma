@@ -1,0 +1,110 @@
+.home{
+    font-family: 'Inter', sans-serif;
+    background-color: var(--primary-blue);
+    color: var(--text-primary-light);
+    overflow: hidden; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.header{
+    position: relative;
+    opacity: 1;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0px 0px 55px rgba(0, 0, 0, 0.5);
+    background-color: var(--bg-light);
+    padding: 3rem 8rem;
+    border-radius: 1rem;
+}
+
+.headerTitle img:hover{
+    transition: all 0.5s;
+    transform: scale(1.05);
+}
+
+.inputOptions{
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.agrDiscOptions{
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    border: 1px solid blue;
+    padding: 1rem;
+    position: relative;
+    border-radius: 1rem;
+}
+
+.agrClassOptions{
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    border: 1px solid blue;
+    padding: 1rem;
+    position: relative;
+    border-radius: 1rem;
+}
+
+.title{
+    position: absolute;
+    top: -0.8rem;
+    left: 1rem;
+    background-color: var(--bg-light);
+    font-weight: bold;
+    padding: 0 0.5rem;
+    color: var(--primary-blue);
+    color: var(--text-secondary-light);
+}
+
+.inputOp {
+    width: auto;
+    padding: 2rem;
+    background: rgba(233, 235, 248, 0.6);
+    border: 1px solid white;
+    box-shadow: 6px 6px 5px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(6px);
+    border-radius: 17px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.5s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    user-select: none;
+    font-weight: bolder;
+    color: black;
+    text-decoration: none;
+}
+
+.inputOp:hover {
+    border: 1px solid var(--primary-blue);
+    transform: scale(1.05);
+}
+
+.icon{
+    padding: 0.5rem;
+    background-color: var(--primary-blue);
+    border-radius: 50%;
+    margin-bottom: 0.6rem;
+    box-shadow: var(--shadow-strong-light);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img{
+    width: 40px;
+}

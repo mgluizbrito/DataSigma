@@ -1,0 +1,104 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html, body, #root {
+    height: 100%;
+    width: 100%;
+}
+
+:root {
+    --primary-blue: #1e1eb1;
+    --primary-blue-light: #5a5af0;
+    --secondary-blue: #e8e8ff;
+    --accent-gradient: linear-gradient(135deg, #3e3eed 0%, #5a5af0 100%);
+    --bg-light: #f8f8e9;
+    --text-primary-light: #1a1a1a;
+    --text-secondary-light: #6b7280;
+    --border-light: #e5e7eb;
+    --shadow-light: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-strong-light: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.section{
+    padding-top: 2.5rem;
+}
+
+.flex {
+    display: flex;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.justify-around {
+    justify-content: space-around;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.gap{
+    gap: 4rem;
+}
+
+.button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+.d-none {
+    display: none !important;
+}
+
+.navbar {
+    background: var(--primary-blue);
+    padding: 12px 24px;
+    box-shadow: var(--shadow-light);
+}
+
+.nav-links {
+    display: flex;
+    justify-content: space-around;
+    gap: 24px;
+}
+
+.nav-links span {
+    font-size: 1.5rem;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    font-size: 0.85rem;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.nav-item:hover {
+    color: var(--secondary-blue);
+    transform: translateY(-2px);
+}
+
+.nav-item span {
+    margin-top: 4px;
+}
