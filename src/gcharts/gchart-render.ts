@@ -21,7 +21,7 @@ function loadGoogleCharts(): Promise<void> {
 }
 
 // Função principal que será exportada
-export default async function renderCharts(
+export async function renderAgrupDiscretoCharts(
     divID: string,
     Xi: number[],
     Fi: number[],

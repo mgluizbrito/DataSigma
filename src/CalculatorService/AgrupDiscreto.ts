@@ -1,5 +1,5 @@
 import * as CalcFunc from './CalculateFunctions.ts';
-import renderCharts from '../gcharts/gchart-render.ts';
+import { renderAgrupDiscretoCharts } from '../gcharts/gchart-render.ts';
 
 let Xi: number[] = [];
 let Fi: number[] = [];
@@ -168,5 +168,5 @@ function renderResults(Xi: number[], Fi: number[]): void {
         resultSection.querySelector('.results-list')?.appendChild(coeficienteVariacaoDiv);
     }
 
-    renderCharts("results-charts", Xi, Fi, unitMeasure);
+    renderAgrupDiscretoCharts("results-charts", Xi, Fi, unitMeasure);
 }
