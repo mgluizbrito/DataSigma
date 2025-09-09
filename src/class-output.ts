@@ -38,14 +38,23 @@ function addRow(): void {
 
     const newLiField = row.querySelector('.li-field') as HTMLInputElement;
     const newLsField = row.querySelector('.ls-field') as HTMLInputElement;
+    const newFiField = row.querySelector('.fi-field') as HTMLInputElement;
 
     if (document.querySelectorAll('.class-row')?.length > 1) {
-        newLiField.value = (document.querySelector('#classes-table-body .class-row:nth-last-child(2) .ls-field') as HTMLInputElement).value || '';
-        if (newLsField) newLsField.focus();
-    
-    } else if (newLiField) newLiField.focus();
 
-    const newFiField = row.querySelector('.fi-field') as HTMLInputElement;
+        const oldLsField: string = (document.querySelector('#classes-table-body .class-row:nth-last-child(2) .ls-field') as HTMLInputElement).value;
+        newLiField.value = oldLsField || '';
+        if (newFiField) newFiField.focus();
+
+        const amplitude = (parseFloat((document.querySelector('.ls-field') as HTMLInputElement).value) - parseFloat((document.querySelector('.li-field') as HTMLInputElement).value))
+        newLsField.value = (amplitude + parseFloat(oldLsField))+"";
+
+        newLiField.disabled = true;
+        newLsField.disabled = true;
+    } else {
+        if (newLiField) newLiField.focus();
+    }
+    
     newFiField.addEventListener('keydown', event => { if (event.key === 'Enter') addRow() });
 
 }
