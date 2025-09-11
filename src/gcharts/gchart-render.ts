@@ -31,10 +31,9 @@ export async function renderAgrupDiscretoCharts(
     await loadGoogleCharts();
 
     google.charts.load("current", { packages: ["corechart"] });
-    google.charts.setOnLoadCallback(() => drawChart(divID, Xi, Fi, unitMeasure));
+    google.charts.setOnLoadCallback(() => drawLineChart(divID, Xi, Fi, unitMeasure));
 }
-
-function drawChart(divID: string, Xi: number[], Fi: number[], unitMeasure: string): void {
+function drawLineChart(divID: string, Xi: number[], Fi: number[], unitMeasure: string): void {
 
     const data = new google.visualization.DataTable();
     data.addColumn("string", "Xi");
@@ -48,17 +47,66 @@ function drawChart(divID: string, Xi: number[], Fi: number[], unitMeasure: strin
         title: "Distribuição de Frequência",
         hAxis: { title: `Xi [${unitMeasure}]` },
         vAxis: {
-			title: "Fi",
-			gridlines: { count: 12 },
-		},
+            title: "Fi",
+            gridlines: { count: 12 },
+        },
         pointSize: 6,
         lineWidth: 2,
         legend: { position: "none" },
         bar: { groupWidth: "60%" },
-		colors: ["#4c68d1"],
+        colors: ["#4c68d1"],
     };
 
     const chart = new google.visualization.LineChart(
+        document.getElementById(divID)
+    );
+    chart.draw(data, chartConfig);
+}
+
+export async function renderAgrupClassesCharts(
+    divID: string,
+    Li: number[],
+    Ls: number[],
+    Fi: number[],
+    pmi: number[],
+	unitMeasure: string
+): Promise<void> {
+
+    await loadGoogleCharts();
+
+    google.charts.load("current", { packages: ["corechart"] });
+    google.charts.setOnLoadCallback(() => drawHistogramaChart(divID, Li, Ls, Fi, pmi, unitMeasure));
+}
+function drawHistogramaChart(divID: string, Li: number[], Ls: number[], Fi: number[], pmi: number[], unitMeasure: string): void {
+
+    const data = new google.visualization.DataTable();
+    data.addColumn('string', 'Intervalo'); // Eixo X
+    data.addColumn('number', 'Fi');  // Barras
+    data.addColumn('number', 'PMI'); // Linha
+
+    for (let i = 0; i < Fi.length; i++) {
+        const intervalo = `${Li[i]} - ${Ls[i]} ${unitMeasure}`;
+        const freq = Fi[i];
+        const ogiva = pmi[i] !== undefined ? pmi[i] : freq;
+        
+        data.addRow([intervalo, freq, ogiva]);
+    }
+
+    const chartConfig = {
+        title: 'Histograma com Ogiva de Galton',
+        vAxis: { title: 'Frequência' },
+        hAxis: { 
+            title: `Intervalos [${unitMeasure}]`,
+            gridlines: { count: 12 }
+        },
+        seriesType: 'bars',
+        series: {
+        1: { type: 'line', color: '#ff4040', lineWidth: 3, pointSize: 6 },
+        },
+        legend: { position: 'bottom' },
+    };
+
+    const chart = new google.visualization.ComboChart(
         document.getElementById(divID)
     );
     chart.draw(data, chartConfig);

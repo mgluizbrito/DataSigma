@@ -1,5 +1,5 @@
 import * as CalcFunc from './CalculateFunctions.ts';
-// import renderCharts from '../gcharts/gchart-render.ts';
+import {renderAgrupClassesCharts} from '../gcharts/gchart-render.ts';
 
 let Li: number[] = [];
 let Ls: number[] = [];
@@ -32,9 +32,11 @@ function renderResults(Li: number[], Ls: number[], Fi: number[]): void{
     unitMeasure = (document.querySelector('#unit-measure') as HTMLInputElement).value;
 
     const resultSection = document.querySelector('.results-section') as HTMLDivElement;
+    const chartsSection = document.querySelector('.charts-section') as HTMLDivElement
 
     document.querySelector('.welcome-section')?.classList.add("d-none");
     resultSection.classList.remove('d-none');
+    chartsSection.classList.remove('d-none');
 
     const modaCheckbox = document.getElementById('moda') as HTMLInputElement;
     const modaCzuberCheckbox = document.getElementById('modaCzuber') as HTMLInputElement;
@@ -158,6 +160,6 @@ function renderResults(Li: number[], Ls: number[], Fi: number[]): void{
         resultSection.querySelector('.results-list')?.appendChild(coeficienteVariacaoDiv);
     }
 
-    //renderCharts("results-charts", CalcFunc.calcPontoMedio(Li, Ls), Fi, unitMeasure);
+    renderAgrupClassesCharts("results-charts", Li, Ls, Fi, CalcFunc.calcPontoMedio(Li, Ls), unitMeasure);
 
 }
