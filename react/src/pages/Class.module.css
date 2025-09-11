@@ -1,0 +1,191 @@
+body {
+    background-color: var(--bg-light);
+    color: var(--text-primary-light);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.3rem;
+}
+
+.inputCard {
+    background-color: white;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: var(--shadow-light);
+    transition: box-shadow 0.3s ease-in-out;
+    border: 1px solid var(--border-light);
+    font-weight: bold;
+}
+
+.inputCard:hover {
+    box-shadow: var(--shadow-strong-light);
+}
+
+.outputCard:hover{
+    box-shadow: var(--shadow-strong-light);
+}
+
+.h2{
+    color: var(--text-secondary-light);
+}
+
+.h3{
+    color: var(--text-secondary-light);
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.value{
+    color: var(--primary-blue-light);
+}
+
+.icon{
+    color: var(--text-secondary-light);
+}
+
+.unit{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    color: var(--text-secondary-light);
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    font-size: 1.3rem;
+}
+
+.input {
+    border: 1px solid var(--border-light);
+    background-color: var(--secondary-blue);
+    color: var(--text-primary-light);
+    padding: 8px 12px;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s ease;
+    width: fit-content;
+    font-size: 1rem;
+}
+
+.input:focus {
+    border-color: var(--primary-blue-light);
+}
+
+.table-header>div {
+    font-weight: 600;
+    color: var(--primary-blue);
+}
+
+.remove {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.removeButton {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    margin-left: -1rem;
+}
+
+.removeButton svg {
+    color: var(--text-secondary-light);
+    transition: color 0.2s ease;
+}
+
+.removeButton:hover svg {
+    color: #ef4444; 
+}
+
+.text{
+    font-size: 1.5rem;
+}
+
+.addRow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+    gap: 10px;
+    color: var(--text-secondary-light);
+    font-weight: 600;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.addRow:hover {
+    color: var(--primary-blue);
+}
+
+.row{
+   margin-bottom: 1rem; 
+}
+
+.outputCard{
+    background-color: white;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: var(--shadow-light);
+    transition: box-shadow 0.3s ease-in-out;
+    border: 1px solid var(--border-light);
+    height: fit-content;
+}
+
+.output{
+    gap: 6rem;
+}
+
+.options{
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    font-weight: 600;
+    font-size: 1.3rem;
+}
+
+.optionMargin{
+    padding: .5rem;
+}
+
+.checkbox-option input[type="checkbox"] {
+    accent-color: var(--primary-blue);
+    height: 20px;
+    width: 20px;
+    border-radius: 4px;
+}
+
+.alignOption{
+    margin-left: 3rem;
+}
+
+.action{
+    margin-right: 5rem;
+}
+
+.resultCard{
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: var(--shadow-light);
+    transition: box-shadow 0.3s ease-in-out;
+    border: 1px solid var(--border-light);
+    height: fit-content;
+}
+
+.results{
+    padding: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.chartCenter{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chart{
+    width: 50%;
+}
