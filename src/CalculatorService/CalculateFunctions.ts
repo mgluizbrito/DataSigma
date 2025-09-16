@@ -153,5 +153,12 @@ export function getModaType(modas: number[]): string {
     if (modas.length === 1) return "Unimodal";
     if (modas.length === 2) return "Bimodal";
     if (modas.length === 3) return "Trimodal";
+    if (modas.length === 4) return "Tetramodal";
+    if (modas.length === 5) return "Pentamodal";
+    if (modas.length === 6) return "Hexamodal";
+    if (modas.length === 7) return "Heptamodal";
+    if (modas.length === 8) return "Octaamodal";
+    if (modas.length === 9) return "Eneamodal";
+    if (modas.length === 10) return "Decamodal";
     return "Multimodal";
 }

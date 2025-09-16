@@ -130,7 +130,7 @@ function renderResults(Xi: number[], Fi: number[]): void {
         varianciaDiv.className = 'result-item result-variancia';
         varianciaDiv.innerHTML = `
             <span class="result-label">Variancia</span>
-            <span class="result-value">${variancia} ${unitMeasure}</span>
+            <span class="result-value">(${variancia} ${unitMeasure})²</span>
         `;
 
         resultSection.querySelector('.results-list')?.appendChild(varianciaDiv);
@@ -162,7 +162,7 @@ function renderResults(Xi: number[], Fi: number[]): void {
         coeficienteVariacaoDiv.className = 'result-item result-coeficienteVariacao';
         coeficienteVariacaoDiv.innerHTML = `
             <span class="result-label">Coeficiente de Variação</span>
-            <span class="result-value">${coeficienteVariacao} ${unitMeasure} %</span>
+            <span class="result-value">${coeficienteVariacao}%</span>
         `;
 
         resultSection.querySelector('.results-list')?.appendChild(coeficienteVariacaoDiv);

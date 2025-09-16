@@ -120,7 +120,7 @@ function renderResults(Li: number[], Ls: number[], Fi: number[]): void{
         varianciaDiv.className = 'result-item result-variancia';
         varianciaDiv.innerHTML = `
             <span class="result-label">Variancia</span>
-            <span class="result-value">${variancia} ${unitMeasure}</span>
+            <span class="result-value">(${variancia} ${unitMeasure})²</span>
         `;
 
         resultSection.querySelector('.results-list')?.appendChild(varianciaDiv);
